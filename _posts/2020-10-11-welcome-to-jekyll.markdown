@@ -3,11 +3,7 @@ layout: post
 title:  "Welcome to Jekyll!"
 date:   2020-10-11 22:32:15 +0800
 categories: jekyll update
-<<<<<<< HEAD
-published: flase
-=======
 published: false
->>>>>>> cf64dbad0437c9e5b8d94212ccd9d945909bbc55
 ---
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
