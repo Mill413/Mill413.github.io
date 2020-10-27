@@ -235,6 +235,8 @@ plugins:
 # Other Plugins
 # ---------------------------------------------------------------------------------------
 
+markdown: kramdown
+
 optional_front_matter:
   remove_originals:    true
 
