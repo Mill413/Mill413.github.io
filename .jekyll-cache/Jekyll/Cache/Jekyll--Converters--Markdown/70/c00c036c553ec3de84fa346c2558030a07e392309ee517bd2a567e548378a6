@@ -1,9 +1,9 @@
-I"B2<p><a href="https://ac.nowcoder.com/acm/contest/7501/I">题目链接</a></p>
+I"53<p><a href="https://ac.nowcoder.com/acm/contest/7501/I">题目链接</a></p>
 
 <h2 id="题意">题意</h2>
-
+<p>有一个\(n*m\)的二维矩阵，每个格子可以向上下左右之一的方向走，问有多少个格子可以间接或直接走出矩阵</p>
 <h2 id="思路">思路</h2>
-
+<p>二维并查集裸题，最后遍历所有格子，如果父节点在矩阵外就计数</p>
 <h2 id="代码">代码</h2>
 <div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
 #define inf 0x7f7f7f7f

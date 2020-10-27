@@ -1,0 +1,104 @@
+I"53<p><a href="https://ac.nowcoder.com/acm/contest/7501/I">题目链接</a></p>
+
+<h2 id="题意">题意</h2>
+<p>有一个\(n*m\)的二维矩阵，每个格子可以向上下左右之一的方向走，问有多少个格子可以间接或直接走出矩阵</p>
+<h2 id="思路">思路</h2>
+<p>二维并查集裸题，最后遍历所有格子，如果父节点在矩阵外就计数</p>
+<h2 id="代码">代码</h2>
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;bits/stdc++.h&gt;
+#define inf 0x7f7f7f7f
+#define ms(a) memset(a, 0, sizeof(a))
+#define repu(i, a, b) for (int i = a; i &lt; b; i++)
+#define repd(i, a, b) for (int i = a; i &gt; b; i--)
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">ll</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="kt">long</span> <span class="kt">double</span> <span class="n">ld</span><span class="p">;</span>
+
+<span class="k">const</span> <span class="kt">int</span> <span class="n">M</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="mf">1e3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">5</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">mod</span> <span class="o">=</span> <span class="kt">int</span><span class="p">(</span><span class="mf">1e9</span><span class="p">)</span> <span class="o">+</span> <span class="mi">7</span><span class="p">;</span>
+
+<span class="k">struct</span> <span class="nc">node</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="k">operator</span><span class="o">==</span><span class="p">(</span><span class="k">const</span> <span class="n">node</span><span class="o">&amp;</span> <span class="n">a</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">x</span> <span class="o">==</span> <span class="n">x</span> <span class="o">&amp;&amp;</span> <span class="n">a</span><span class="p">.</span><span class="n">y</span> <span class="o">==</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">true</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nb">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+<span class="n">node</span> <span class="n">fa</span><span class="p">[</span><span class="n">M</span><span class="p">][</span><span class="n">M</span><span class="p">];</span>
+<span class="kt">void</span> <span class="nf">init</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">repu</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">repu</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span> <span class="p">{</span> <span class="n">fa</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">};</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">node</span> <span class="nf">find</span><span class="p">(</span><span class="n">node</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fa</span><span class="p">[</span><span class="n">x</span><span class="p">.</span><span class="n">x</span><span class="p">][</span><span class="n">x</span><span class="p">.</span><span class="n">y</span><span class="p">]</span> <span class="o">==</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">x</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">fa</span><span class="p">[</span><span class="n">x</span><span class="p">.</span><span class="n">x</span><span class="p">][</span><span class="n">x</span><span class="p">.</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">fa</span><span class="p">[</span><span class="n">x</span><span class="p">.</span><span class="n">x</span><span class="p">][</span><span class="n">x</span><span class="p">.</span><span class="n">y</span><span class="p">]);</span>
+<span class="p">}</span>
+<span class="kt">void</span> <span class="nf">merge</span><span class="p">(</span><span class="n">node</span> <span class="n">x</span><span class="p">,</span> <span class="n">node</span> <span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">node</span> <span class="n">xx</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+    <span class="n">node</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">find</span><span class="p">(</span><span class="n">y</span><span class="p">);</span>
+
+    <span class="n">fa</span><span class="p">[</span><span class="n">xx</span><span class="p">.</span><span class="n">x</span><span class="p">][</span><span class="n">xx</span><span class="p">.</span><span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">yy</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">solve</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">;</span>
+    <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span> <span class="o">&gt;&gt;</span> <span class="n">m</span><span class="p">;</span>
+
+    <span class="n">init</span><span class="p">();</span>
+
+    <span class="n">repu</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">repu</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kt">char</span> <span class="n">c</span><span class="p">;</span>
+            <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">c</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="sc">'W'</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">merge</span><span class="p">({</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">},</span> <span class="p">{</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">});</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="sc">'A'</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">merge</span><span class="p">({</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">},</span> <span class="p">{</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">});</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="sc">'S'</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">merge</span><span class="p">({</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">},</span> <span class="p">{</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">});</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">==</span> <span class="sc">'D'</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">merge</span><span class="p">({</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">},</span> <span class="p">{</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">});</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// repu(i, 1, n + 1) {</span>
+    <span class="c1">//     repu(j, 1, m + 1) { cout &lt;&lt; fa[i][j].x &lt;&lt; "," &lt;&lt; fa[i][j].y &lt;&lt; " "; }</span>
+    <span class="c1">//     cout &lt;&lt; endl;</span>
+    <span class="c1">// }</span>
+
+    <span class="n">ll</span> <span class="n">ans</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">repu</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">repu</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">node</span> <span class="n">f</span> <span class="o">=</span> <span class="n">find</span><span class="p">({</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">});</span>
+            
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">((</span><span class="n">f</span><span class="p">.</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">f</span><span class="p">.</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">f</span><span class="p">.</span><span class="n">y</span> <span class="o">&gt;=</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">f</span><span class="p">.</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">)))</span> <span class="p">{</span>
+                <span class="n">ans</span><span class="o">++</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">ans</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">ios</span><span class="o">::</span><span class="n">sync_with_stdio</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+    <span class="n">cin</span><span class="p">.</span><span class="n">tie</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+    <span class="c1">// int t;</span>
+    <span class="c1">// cin &gt;&gt; t;</span>
+    <span class="c1">// while (t--) {</span>
+    <span class="c1">//     solve();</span>
+    <span class="c1">// }</span>
+    <span class="n">solve</span><span class="p">();</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+:ET
