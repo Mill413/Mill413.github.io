@@ -271,4 +271,10 @@ sass:
 # feed:
 #   path:                atom.xml
 
-disqus: githubpages
+# disqus: githubpages
+
+valine_comment:
+    enable: true
+    leancloud_appid: i6pA9zIY8UkFUsDMy0o1dHWy-gzGzoHsz
+    leancloud_appkey: 3Xpi8xW4bLSw6vCGjdHJBgUd
+    placeholder: "Just go go"
