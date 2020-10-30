@@ -193,7 +193,7 @@ If a table is small enough to fit the screen even on small screens, you can add 
 to force a table to use the entire available content width. Note that stretched tables can no longer be scrolled.
 
 | Default aligned |Left aligned| Center aligned  | Right aligned  |
-|-----------------|:-----------|:---------------:|---------------:|
+|-----------------|:-----------|:---------------:|---------------:| 
 | First body part |Second cell | Third cell      | fourth cell    |
 {:.stretch-table}
 

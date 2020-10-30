@@ -3,7 +3,7 @@ layout: page
 title: Documentation
 description: >
   Here you should be able to find everything you need to know to accomplish the most common tasks when blogging with Hydejack.
-# menu: false
+menu: false
 # order: 5
 ---
 
@@ -41,7 +41,7 @@ or [upgrades for pro buyers](upgrade.md#pro-version).
 * [LICENSE]{:.heading.flip-title} --- The license of this project.
 * [NOTICE]{:.heading.flip-title} --- Parts of this program are provided under separate licenses.
 * [CHANGELOG]{:.heading.flip-title} --- Version history of Hydejack.
-{:.related-posts.faded}
+{:.related-posts  .faded}
 
 [install]: install.md
 [upgrade]: upgrade.md
