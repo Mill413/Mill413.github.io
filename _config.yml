@@ -273,8 +273,17 @@ sass:
 
 # disqus: githubpages
 
-valine_comment:
-    enable: true
-    leancloud_appid: i6pA9zIY8UkFUsDMy0o1dHWy-gzGzoHsz
-    leancloud_appkey: 3Xpi8xW4bLSw6vCGjdHJBgUd
-    placeholder: "发一条友善的评论"
+# valine_comment:
+#     enable: true
+#     leancloud_appid: i6pA9zIY8UkFUsDMy0o1dHWy-gzGzoHsz
+#     leancloud_appkey: 3Xpi8xW4bLSw6vCGjdHJBgUd
+#     placeholder: "发一条友善的评论"
+
+gitalk: 
+  enable: true
+  gitalk_clientID: '27c82d52c56002fd0816'
+  gitalk_Secret: 'c275c1e940ddbac99d50a7f11f67e9d876036c71'
+  gitalk_repo: 'mill413.github.io'
+  gitalk_owner: 'Mill413'
+  gitalk_admin: 'Mill413'
+  distractionFreeMode: true
