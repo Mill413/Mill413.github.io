@@ -271,19 +271,11 @@ sass:
 # feed:
 #   path:                atom.xml
 
-# disqus: githubpages
-
-# valine_comment:
-#     enable: true
-#     leancloud_appid: i6pA9zIY8UkFUsDMy0o1dHWy-gzGzoHsz
-#     leancloud_appkey: 3Xpi8xW4bLSw6vCGjdHJBgUd
-#     placeholder: "发一条友善的评论"
-
-gitalk: 
-  enable: true
-  gitalk_clientID: '7f2b924975ecc56a78e8'
-  gitalk_Secret: '91709130ed88c88f61e5a106dff053ea113198c8'
-  gitalk_repo: 'mill413.github.io'
-  gitalk_owner: 'Mill413'
-  gitalk_admin: 'Mill413'
-  distractionFreeMode: true
+# gitalk:
+  # clientID: '7f2b924975ecc56a78e8',
+#   clientSecret: '91709130ed88c88f61e5a106dff053ea113198c8',
+#   repo: 'mill413.github.io',
+#   owner: 'mill413',
+#   admin: ['mill413'],
+#   id: location.pathname,
+#   distractionFreeMode: false
