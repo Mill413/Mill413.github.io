@@ -1,4 +1,4 @@
-{% assign disqus = site.disqus | default:site.disqus_shortname %}
+<!-- {% assign disqus = site.disqus | default:site.disqus_shortname %}
 {% if disqus and page.comments %}
 <aside class="comments related" role="complementary">
   <h2 class="hr">{{ site.data.strings.comments | default:"Comments" }}</h2>
@@ -20,7 +20,7 @@
     });
 </script>
 {% endif %} -->
-{% if site.gitalk.enable %}
+<!-- {% if site.gitalk.enable %}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <script src="/assets/js/md5.min.js"></script>
@@ -37,4 +37,28 @@
     });
     gitalk.render('gitalk-container');
 </script> 
+{% endif %} -->
+{% assign gitalk = site.gitalk.enable %}
+{% assign clientID = site.gitalk.clientID %}
+{% assign clientSecret = site.gitalk.clientSecret %}
+{% assign repo = site.gitalk.repo %}
+{% assign owner = site.gitalk.owner %}
+{% assign admin = site.gitalk.admin %}
+
+
+{% if gitalk %}
+<div id="gitalk-container"></div>
+<noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk" rel="nofollow">comments powered by gitalk.</a></noscript>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+      clientID:'{{ clientID }}',
+      clientSecret:'{{ clientSecret }}',
+      repo:'{{ repo }}',
+      owner:'{{ owner }}',
+      admin:['{{ admin }}'],
+      id: decodeURI(window.location.pathname),
+      distractionFreeMode: false
+  });
+  gitalk.render('gitalk-container');
+</script>
 {% endif %}
