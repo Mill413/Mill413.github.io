@@ -21,12 +21,29 @@
 
 layout: base
 ---
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 
 {% include post.html post=page link_title=false %}
 
-<hr class="dingbat related" />
+<div id="gitalk-container"></div>
+<noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk" rel="nofollow">comments powered by gitalk.</a></noscript>
+<script type="text/javascript">
+  var gitalk = new Gitalk({
+      clientID:'7f2b924975ecc56a78e8',
+      clientSecret:'b3e0117a19027761314bc8c936e564c884f78728',
+      repo:'Mill413.github.io',
+      owner:'Mill413',
+      admin:['Mill413'],
+      id: decodeURI(window.location.pathname),
+      distractionFreeMode: false
+  });
+  gitalk.render('gitalk-container');
+</script>
 
-{% assign addons = site.hydejack.post_addons %}
+<!-- <hr class="dingbat related" /> -->
+
+<!-- {% assign addons = site.hydejack.post_addons %}
 {% unless addons %}{% assign addons = "about,newsletter,related,random" | split:"," %}{% endunless %}
 {% for addon in addons %}
   {% case addon %}
@@ -36,5 +53,4 @@ layout: base
     {% include related-posts.html post=post %}
   {% else %}
   {% endcase %}
-{% endfor %}
-
+{% endfor %} -->

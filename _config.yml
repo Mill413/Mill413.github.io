@@ -68,13 +68,13 @@ paginate:              5
 paginate_path:         /page-:num/
 
 # Gittalk
-gitalk:
-  enable: true
-  owner: Mill413
-  repo: Mill413.github.io
-  clientID: 7f2b924975ecc56a78e8
-  clientSecret: b3e0117a19027761314bc8c936e564c884f78728
-  admin: Mill413
+# gitalk:
+#   enable: true
+#   owner: Mill413
+#   repo: Mill413.github.io
+#   clientID: 7f2b924975ecc56a78e8
+#   clientSecret: b3e0117a19027761314bc8c936e564c884f78728
+#   admin: Mill413
 
 # Customizaton
 # ========================================================================================
