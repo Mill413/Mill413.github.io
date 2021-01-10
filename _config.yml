@@ -76,6 +76,8 @@ paginate_path:         /page-:num/
 #   clientSecret: b3e0117a19027761314bc8c936e564c884f78728
 #   admin: Mill413
 
+remote_theme: hydecorp/hydejack@v9.0.5
+
 # Customizaton
 # ========================================================================================
 
